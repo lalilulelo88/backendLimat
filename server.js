@@ -36,6 +36,6 @@ app.use('/pallets',palletRoutes);
 
 app.use('/',appRoutes);
 // set port, listen for requests
-app.listen(80, () => {
-    console.log('Express server puerto 80: \x1b[32m%s\x1b[0m', 'online');
+app.listen(process.env.PORT || 8080, () => {
+    console.log('Express server puerto XXXX: \x1b[32m%s\x1b[0m', 'online');
 });
