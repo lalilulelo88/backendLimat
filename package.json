@@ -4,7 +4,8 @@
   "description": "backend",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +16,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lalilulelo88/backendLimat.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lalilulelo88/backendLimat/issues"
+  },
+  "homepage": "https://github.com/lalilulelo88/backendLimat#readme"
 }
