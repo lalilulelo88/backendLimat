@@ -16,6 +16,7 @@ app.use(function(req, res, next) {
 //rutas
 var appRoutes = require('./routes/app');
 var palletRoutes = require('./routes/pallets.js');
+var guiaRoutes = require('./routes/guias.js');
 
 
 // parse requests of content-type: application/x-www-form-urlencoded
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 
 
 app.use('/pallets',palletRoutes);
+app.use('/guias',guiaRoutes);
 
 
 // simple route

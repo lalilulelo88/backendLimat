@@ -1,9 +1,10 @@
 const sql = require("./db");
 
 // constructor
-const Pallet = function(pallet) {
-  this.estado = pallet.estado;
-  this.posicion = pallet.posicion;
+const Guia = function(guia) {
+    this.id = guia.id
+    this.numero = guia.numero
+  this.estado = guia.estado;
 
 };
 
@@ -20,8 +21,8 @@ const Pallet = function(pallet) {
 //   });
 // };
 
-Pallet.findById = (palletId, result) => {
-  sql.query(`SELECT * FROM pallet WHERE id = ${palletId}`, (err, res) => {
+Guia.findById = (guiaId, result) => {
+  sql.query(`SELECT * FROM guia_ingreso WHERE id = ${guiaId}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -29,7 +30,7 @@ Pallet.findById = (palletId, result) => {
     }
 
     if (res.length) {
-      console.log("found pallet: ", res[0]);
+      console.log("found guia: ", res[0]);
       result(null, res[0]);
       return;
     }
@@ -39,37 +40,23 @@ Pallet.findById = (palletId, result) => {
   });
 };
 
-Pallet.getAll = result => {
-  sql.query("SELECT * FROM pallet", (err, res) => {
+Guia.getAll = result => {
+  sql.query("SELECT * FROM guia_ingreso  WHERE estado_guia = 0 ", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
 
-    console.log("pallets: ", res);
+    console.log("guias: ", res);
     result(null, res);
   });
 };
 
-Pallet.getAllGuia = (idGuia, result) => {
-  sql.query("SELECT * FROM pallet WHERE guia_ingreso = ?",
-  [idGuia], (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
-
-    console.log("pallets: ", res);
-    result(null, res);
-  });
-};
-
-Pallet.updateById = (id, pallet, result) => {
+Guia.updateById = (id, guia, result) => {
   sql.query(
-    "UPDATE pallet SET id_estadoPallet = ?, posicion_pallet = ? WHERE id = ?",
-    [pallet.estado,pallet.posicion, id],
+    "UPDATE guia_ingreso SET estado_guia = ? WHERE id = ?",
+    [guia.estado, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -83,8 +70,8 @@ Pallet.updateById = (id, pallet, result) => {
         return;
       }
 
-      console.log("updated pallet: ", { id: id, ...pallet });
-      result(null, { id: id, ...pallet });
+      console.log("updated pallet: ", { id: id, ...guia });
+      result(null, { id: id, ...guia });
     }
   );
 };
@@ -121,4 +108,4 @@ Pallet.updateById = (id, pallet, result) => {
 //   });
 // };
 
-module.exports = Pallet;
+module.exports = Guia;

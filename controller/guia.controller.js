@@ -1,4 +1,4 @@
-const Pallet = require("../models/pallet.model.js");
+const Guia = require("../models/guia.model.js");
 
 // Create and Save a new Customer
 // exports.create = (req, res) => {
@@ -7,7 +7,7 @@ const Pallet = require("../models/pallet.model.js");
 
 // Retrieve all Customers from the database.
 exports.findAll = (req, res) => {
-    Pallet.getAll((err, data) => {
+    Guia.getAll((err, data) => {
       if (err)
         res.status(500).send({
           message:
@@ -17,34 +17,17 @@ exports.findAll = (req, res) => {
     });
   };
 
-  exports.findAllGuia = (req, res) => {
-    Pallet.getAllGuia(req.params.idGuia,(err, data) => {
-      if (err) {
-        if (err.kind === "not_found") {
-          res.status(404).send({
-            message: `Not found Pallet with idguia ${req.params.idGuia}.`
-          });
-        } else {
-          res.status(500).send({
-            message: "Error retrieving Pallet with idguia " + req.params.idGuia
-          });
-        }
-      } else res.send(data);
-    });
-  };
-
-
 // Find a single Customer with a customerId
 exports.findOne = (req, res) => {
-    Pallet.findById(req.params.id, (err, data) => {
+    Guia.findById(req.params.id, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Pallet with id ${req.params.id}.`
+            message: `Not found Guia with id ${req.params.id}.`
           });
         } else {
           res.status(500).send({
-            message: "Error retrieving Pallet with id " + req.params.id
+            message: "Error retrieving Guia with id " + req.params.id
           });
         }
       } else res.send(data);
@@ -60,9 +43,9 @@ exports.update = (req, res) => {
       });
     }
   
-    Pallet.updateById(
+    Guia.updateById(
       req.params.id,
-      new Pallet(req.body),
+      new Guia(req.body),
       (err, data) => {
         if (err) {
           if (err.kind === "not_found") {

@@ -1,21 +1,18 @@
 var express = require("express");
 var app = express();
-var pallets = require("../controller/pallet.controller");
+var guias = require("../controller/guia.controller");
   
     // Create a new Customer
    // app.post("/pallets", pallets.create);
   
     // Retrieve all Customers
-    app.get("/", pallets.findAll);
+    app.get("/", guias.findAll);
   
     // Retrieve a single Customer with customerId
-    app.get("/:id", pallets.findOne);
-
-    // Retrieve a single Customer with customerId
-    app.get("/guia/:idGuia", pallets.findAllGuia);
+    app.get("/:id", guias.findOne);
   
     // Update a Customer with customerId
-    app.put("/:id", pallets.update);
+    app.put("/:id", guias.update);
   
     // Delete a Customer with customerId
   //  app.delete("/pallets/:customerId", pallets.delete);
